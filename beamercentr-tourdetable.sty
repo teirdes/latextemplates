@@ -1,4 +1,4 @@
-\ProvidesPackage{beamercentr}[2020/05/24 CENTR Beamer theme.]
+\ProvidesPackage{beamercentr-tourdetable}[2020/05/24 CENTR Beamer theme.]
 % based on beamersobre theme
 
 \RequirePackage{xifthen, tikz}
@@ -17,8 +17,6 @@
 
 \def\num(#1){\numexpr#1\relax}
 \def\dim(#1){\dimexpr#1\relax}
-
-\let\insertslideautho =\@empty%
 
 \AtBeginDocument{
   \pgfdeclaremask{centr}{image002.png}
@@ -45,30 +43,6 @@
 \setbeamertemplate{blocks}[rounded]
 \setbeamertemplate{navigation symbols}{}
 
-
-%<< ~~[· title page   ·]~~ >>
-
-\setbeamercolor{centr@subsubtitlecolor}{use=structure,fg=structure.fg,bg=structure.bg}
-\setbeamertemplate{title page}{%
-  \vskip3\bigskipamount
-  \begin{beamercolorbox} [wd=\paperwidth, center, vmode] {}
-    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
-    \ifx\insertsubtitle\@empty\else
-      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
-    \fi
-    \ifx\insertinstitute\@empty\else
-      \vskip2\bigskipamount
-      \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute
-    \fi
-  \end{beamercolorbox}
-
-  \vskip\bigskipamount
-  \vfill
-  \begin{beamercolorbox} [right, wd=.95\textwidth] {}
-    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
-    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}
-  \end{beamercolorbox}}
-
 %>>
 %<< ~~[· frametitle   ·]~~ >>
 
@@ -89,20 +63,6 @@
 %<< ~~[· side bar     ·]~~ >>
 
 \userightsidebartemplate{0pt}{}% gets rid of the lower logo
-
-%>>
-%<< ~~[· headline     ·]~~ >>
-
-\setbeamertemplate{headline}{%
-  \begin{beamercolorbox}
-    [wd=\textwidth, ht=\strutht, dp=\strutdp, ignorebg=true,
-     leftskip=\beamer@leftmargin, rightskip=\beamer@rightmargin] {headline}
-    \ifnum\insertframenumber=1
-    \else
-      \insertsectionnavigationhorizontal{\dim(\hsize-\leftskip-\rightskip)}
-        {\hskip-.3cm}{\hskip-.3cm}% remove space inserted by beamer
-    \fi
-  \end{beamercolorbox}}
 
 %>>
 %<< ~~[· footline     ·]~~ >>
@@ -136,8 +96,6 @@
     \end{beamercolorbox}
     \fi}
 
-
-%\useoutertheme{infolines}% for example, ymmv
 
 \makeatletter
 % add a macro that saves its argument
@@ -189,30 +147,6 @@
   \usebeamerfont{itemize subsubitem}\centr@squarebullets{\centr@bulletcoliii}}
 
 %>>
-%<< ~~[· bibliography ·]~~ >>
-
-\setbeamertemplate{bibliography item}{%
-  \begin{tikzpicture}[rounded corners=1pt, x=9mm, y=9mm]
-    \useasboundingbox (0, 0.2) rectangle (0.5, 0.7);
-    \path [fill=bg!85!blue]
-      (0, 0.25) rectangle (0.4, 0.5);
-    \path [shade, bottom color=bg, top color=bg!85!blue]
-      (0, 0) -- (0.3, 0) -- (0.4, 0.12) -- (0.4, 0.3) -- (0, 0.3) -- cycle;
-    \path [shade, left color=bg, right color=bg!85!blue]
-      (0,0.27) .. controls (0.25,0.25) .. (0.4,0.5) -- (0,0.5) -- cycle;
-    \path [fill=bg!90!blue]
-      (0,0) rectangle (0.3,0.05);
-    \path [shade, left color=bg!95!blue, right color=bg!90!blue]
-      (0,0) rectangle (0.05,0.5);
-    \path [shade, left color=bg,right color=bg!80!black, shading angle=45]
-      (0.3,0) -- (0.3,0.12) -- (0.4,0.12) -- cycle;
-    \path [draw=fg!35!bg]
-      (0,0) -- (0.3,0) -- (0.4,0.12) -- (0.4,0.5) -- (0,0.5) -- cycle;
-    \path [draw=fg!35!bg]
-      (0.3,0) -- (0.3,0.12) -- (0.4,0.12);
-  \end{tikzpicture}}
-
-%>>
 %<< ~~[· blocks       ·]~~ >>
 
 \newcommand\defblock[1][]{%
@@ -241,20 +175,6 @@
 \defblock
 \defblock[example]
 \defblock[alerted]
-
-%<< ~~[· macros     ·]~~ >>
-
-\let\bibliographyorig\bibliography
-\def\bibliography#1{%
-  \begin{center}
-    \begin{tikzpicture}
-      \usebeamercolor{bibliography structure}
-      \node [draw=fg!30!bg, fill=bg, rounded corners=2pt]
-        {\parbox{0.95\textwidth}{\bibliographyorig{#1}\vskip2mm}};
-    \end{tikzpicture}
-  \end{center}}
-
-\def\centrrulethickness{\setlength\centr@rulethickness}
 
 %>>
 %<< ~~[· fonts      ·]~~ >>
@@ -290,10 +210,6 @@
 \colorlet{palette secondary}{bluemedium}
 \colorlet{palette tertiary}{bluelight}
 
-%\setbeamercolor{palette primary}{bluedark}
-%\setbeamercolor{palette secondary}{bluemedium}
-%\setbeamercolor{palette tertiary}{bluelight}
-
 \setbeamercolor{normal text}{fg=gray!40!black, bg=gray!5}
 \setbeamercolor{alerted text}{fg=darkred, bg=darkred!20}
 \setbeamercolor{example text}{fg=green!50!black, bg=green!50!black!20}
@@ -315,7 +231,6 @@
 \setbeamercolor{block body example}{fg=normal text.fg, bg=green!60!gray!20}
 
 \setbeamercolor{section in head/foot}{fg=white, bg=gray}
-\setbeamercolor{bibliography structure}{fg=normal text.fg, bg=bibstruct}
 
 %>>
 
