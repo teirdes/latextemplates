@@ -1,0 +1,71 @@
+\documentclass[handout]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+%\usepackage[EU1]{fontenc}
+\usepackage{beamercentr-tourdetable}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{swedish}
+
+\usepackage{fontspec}
+\setmainfont[Mapping=tex-text]{EB Garamond}
+\setmonofont[Scale=0.8]{Source Code Pro}
+\newcommand\textlcsc[1]{\textsc{\MakeLowercase{#1}}} % all small caps
+\newcommand\dsacronym[1]{\textsc{\MakeLowercase{#1}}}
+\renewcommand{\textbf}[1]{\textlcsc{#1}} % turn bold into small caps (EB Garamond has no bold)
+\newcommand\dspageref[1]{\textit{s. {\hypersetup{linkcolor=black}\pageref{#1}}}}
+\usepackage[framemethod=tikz]{mdframed}
+
+\newmdenv[tikzsetting={draw=black,fill=white,fill opacity=0.7, line width=4pt},
+      backgroundcolor=none,leftmargin=0,rightmargin=40,innertopmargin=4pt]
+         {titleBox}
+
+\newmdenv[backgroundcolor=none, fontcolor=white, leftmargin=0,rightmargin=10,innertopmargin=4pt, linewidth=0pt]
+      {subtitleBox}
+\usetikzlibrary{decorations}
+\usepackage[most]{tcolorbox}
+\usepackage{marvosym}
+
+\setbeamertemplate{itemize/enumerate body begin}{\tiny}
+\setbeamertemplate{itemize/enumerate subbody begin}{\tiny}
+
+\title{Event name and number, possibly date}
+\author{Working group name and meeting number}
+%\date{Madrid, 28 April 2020}
+
+\begin{document}
+
+{
+  \usebackgroundtemplate{\includegraphics[height=1.0\paperheight]{path/to/titlepage/picture}}
+  \begin{frame}[plain]
+
+\vspace{135pt}
+    
+    \begin{titleBox}
+      \texttt{Working group name and meeting number: Tour-de-table
+        \\
+      {\small Event name and number, possibly date}}
+    \end{titleBox}
+
+\vspace{20pt}
+    
+        \begin{subtitleBox}
+          \textcolor{white}{{\tiny Chairs: The first chair (orga), The second chair (orga) \hspace{20pt} CENTR staff (\texttt{email to centr staff})}}
+\end{subtitleBox}
+  \end{frame}
+}
+
+\begin{frame}{\includegraphics[width=30pt]{path/to/logo}}
+
+\begin{itemize}
+\item {\small A pertinent example of a recent activity that a CENTR member wishes to share with other CENTR members.}
+\item {\small Another example of a recent activity that a CENTR member wishes to share with other CENTR members.}
+\item {\small A third example of a recent activity that a CENTR member wishes to share with other CENTR members.}
+\item {\small A more extended example of a recent activity that follows up on a previous activity that a CENTR member had wished to share with other CENTR members in the past but now also wishes to share an update on.}
+\end{itemize}
+
+  \footlineextra{Contact: Responsible Individual \texttt{<firstname.lastname@domain.cctld>}}
+
+\end{frame}
+
+\end{document}
